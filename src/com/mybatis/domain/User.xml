@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="User">
+	<cache />
+	<select id="selectUser" parameterType="String" resultType="com.mybatis.domain.User">
+		select * from user where id=#{id}
+	</select>
+	<select id="selectUserToHashMap" parameterType="hashMap" resultType="hashMap">
+		select * from user where id=#{id} and name=#{name}
+	</select>
+	<insert id="insertuser" parameterType="com.mybatis.domain.User">
+		insert into user(id,name,nation) values(#{id},#{name},#{nation})
+	</insert>
+	<update id="updateuser" parameterType="hashMap">
+		update user set name=#{name} where id=#{id}
+	</update>
+	<delete id="deleteuser" parameterType="String">
+		delete from user where id=#{id}
+	</delete>
+</mapper>
